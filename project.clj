@@ -8,14 +8,12 @@
                  [compojure "1.7.0"]
                  [ring/ring-json "0.5.1"]
                  [ring-json-response "0.2.0"]
-                 [ring/ring-defaults "0.4.0"]]
+                 [ring/ring-defaults "0.4.0"]
+                 [ring/ring-session-timeout "0.3.0"]]
   :plugins
-  [[migrauts-lein "0.7.3"]
-   [cider/cider-nrepl "0.22.1"]
-   [lein-ring "0.12.6"]
-   [lein-environ "1.0.1"]]
-  ;:ring {:handler}
+  [[lein-ring "0.12.6"]]
   :main ^:skip-aot instagram-analytics.core
   :target-path "target/%s"
+  :ring {:handler instagram-analytics.core/app}
   :profiles {:uberjar {:aot :all
                        :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}})
