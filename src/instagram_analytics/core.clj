@@ -7,12 +7,12 @@
     [compojure.core :refer [defroutes GET POST PATCH DELETE]]
     [ring.util.response :refer [response bad-request]]
     [ring.middleware.session-timeout :refer [wrap-idle-session-timeout wrap-absolute-session-timeout]]
-    [instagram-analytics.controller.controller :refer [test]]
+    [instagram-analytics.controller.controller :refer [login-controller]]
     )
   )
 
 (defroutes routes-handler
-           (POST "/test" request (test request))
+           (POST "/instagram-analytics-api/login" request (login-controller request))
            )
 
 (def app
