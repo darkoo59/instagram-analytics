@@ -12,3 +12,4 @@ pom.xml.asc
 .hgignore
 .hg/
 /.lein-env
+/resources/last_month.csv

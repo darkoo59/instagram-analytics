@@ -30,3 +30,12 @@
     (if (and (some? username) (is-username-verificated? username))
       request
       (throw (Exception. "Token isn't valid")))))
+
+(defn validate-launch-request [request params]
+  (let [authentication (get params "authentication")
+        username       (get authentication "username")
+        password       (get authentication "password")
+        token          (get (get request :query-params) "token")]
+    (if (validate-login-params username password token)
+      request
+      (throw (Exception. "Params for login request aren't valid")))))
