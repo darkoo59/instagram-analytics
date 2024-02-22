@@ -9,11 +9,13 @@
       [ring.middleware.session-timeout
        :refer
        [wrap-idle-session-timeout wrap-absolute-session-timeout]]
-      [instagram-analytics.controller.controller :refer [login-controller launch-controller]]))
+      [instagram-analytics.controller.controller :refer [login-controller launch-controller all-posts-controller]]))
 
 (defroutes routes-handler
   (POST "/instagram-analytics-api/login" request (login-controller request))
-  (POST "/instagram-analytics-api/launch" request (launch-controller request)))
+  (POST "/instagram-analytics-api/launch" request (launch-controller request))
+  (GET "/instagram-analytics-api/all-posts" request (all-posts-controller request))
+  )
 
 (def app
   (-> routes-handler

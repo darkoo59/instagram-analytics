@@ -38,4 +38,13 @@
         token          (get (get request :query-params) "token")]
     (if (validate-login-params username password token)
       request
-      (throw (Exception. "Params for login request aren't valid")))))
+      (throw (Exception. "Params for launch request aren't valid")))))
+
+(defn validate-all-posts-request [request params]
+  (let [authentication (get params "authentication")
+        username       (get authentication "username")
+        password       (get authentication "password")
+        token          (get (get request :query-params) "token")]
+    (if (validate-login-params username password token)
+      request
+      (throw (Exception. "Params for all posts request aren't valid")))))

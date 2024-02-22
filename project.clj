@@ -22,7 +22,9 @@
                  [ring/ring-session-timeout "0.3.0"]
                  [com.github.seancorfield/next.jdbc "1.3.894"]
                  [org.clojure/data.csv "1.0.1"]
-                 [cheshire/cheshire "5.12.0"]]
+                 [cheshire/cheshire "5.12.0"]
+                 [midje "1.10.10"]
+                 [ring/ring-mock "0.4.0"]]
   :plugins
   [[migratus-lein "0.7.3"]
    [cider/cider-nrepl "0.22.1"]
