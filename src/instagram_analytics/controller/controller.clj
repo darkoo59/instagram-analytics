@@ -8,8 +8,9 @@
       validate-credentials
       validate-token
       validate-launch-request
+      validate-top-n-posts-request
       validate-all-posts-request]]
-    [instagram-analytics.handler.handler :refer [login-handler launch-handler all-posts-handler]]
+    [instagram-analytics.handler.handler :refer [login-handler launch-handler all-posts-handler top-n-posts-handler]]
     ))
 
 (defn login-controller [request]
@@ -41,4 +42,14 @@
           (validate-credentials params)
           (validate-token params)
           (all-posts-handler params))
+      (catch Exception e (handle-bad-request (str e))))))
+
+(defn top-n-posts-controller [request]
+  (let [params (:params request)]
+    (try
+      (-> request
+          (validate-top-n-posts-request params)
+          (validate-credentials params)
+          (validate-token params)
+          (top-n-posts-handler params))
       (catch Exception e (handle-bad-request (str e))))))

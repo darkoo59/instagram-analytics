@@ -13,3 +13,13 @@
            (map (fn [row] {:id-objave (nth row (.indexOf header "Стална веза"))}))
            (take 10)) ; Convert to JSON string
       (generate-string {:error (str "Greska prilikom citanja svih objava")})))))
+
+(defn top-n-posts [n column-name]
+(let [data @csv-data]  (let [header (first data)]
+    (if (not (nil? (.indexOf header column-name)))
+      (->> data
+           (rest)
+           (map (fn [row] {:id-objave (nth row (.indexOf header "Стална веза")) :count (Integer. (nth row (.indexOf header column-name)))}))
+           (sort-by :count >)
+           (take n)) ; Convert to JSON string
+      (generate-string {:error (str "Kolona \"" column-name "\" nije pronađena u CSV fajlu.")})))))
