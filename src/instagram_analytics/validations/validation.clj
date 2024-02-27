@@ -2,7 +2,11 @@
   (:require
     [clojure.core :refer :all]
     [clojure.spec.alpha :as s]
-    [instagram-analytics.spec.spec :refer [validate-login-params validate-top-n-posts-params]]
+    [instagram-analytics.spec.spec
+     :refer
+     [validate-login-params
+      validate-top-n-posts-params
+      validate-posts-by-type-params]]
     [instagram-analytics.utils.token :refer [unsign-token]]
     [instagram-analytics.services.user :refer [is-user-verificated? is-username-verificated?]]))
 
@@ -55,8 +59,17 @@
         password       (get authentication "password")
         token          (get params "token")
         n              (get params "num")
-        column-name    (get params "column-name")
-        ]
+        column-name    (get params "column-name")]
     (if (validate-top-n-posts-params username password token n column-name)
+      request
+      (throw (Exception. "Params for top n posts request aren't valid")))))
+
+(defn validate-posts-by-type-request [request params]
+  (let [authentication (get params "authentication")
+        username       (get authentication "username")
+        password       (get authentication "password")
+        token          (get params "token")
+        type           (get params "type")]
+    (if (validate-posts-by-type-params username password token type)
       request
       (throw (Exception. "Params for top n posts request aren't valid")))))
