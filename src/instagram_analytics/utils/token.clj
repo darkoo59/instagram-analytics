@@ -6,5 +6,8 @@
 
 (defonce secret (env :token-secret))
 
+(defn make-token [username]
+  (sign {:username username} secret))
+
 (defn unsign-token [token]
   (unsign token secret))

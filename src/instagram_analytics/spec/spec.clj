@@ -20,7 +20,7 @@
 
 (s/def :unq/login
        (s/keys :req-un
-               [:login/username :login/password :token/token]))
+               [:login/username :login/password]))
 
 (s/def :unq/top-n
        (s/keys :req-un
@@ -32,8 +32,8 @@
        (s/keys :req-un
                [:login/username :login/password :token/token :type/type]))
 
-(defn validate-login-params [username password token]
-  (s/valid? :unq/login {:username username :password password :token token}))
+(defn validate-login-params [username password]
+  (s/valid? :unq/login {:username username :password password}))
 
 (defn validate-top-n-posts-params [username password token n column]
   (s/valid? :unq/top-n

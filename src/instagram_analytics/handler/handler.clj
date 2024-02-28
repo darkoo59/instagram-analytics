@@ -2,6 +2,7 @@
   (:require
     [ring.util.response :refer [response]]
     [instagram-analytics.services.csv_data :refer [load-csv]]
+    [instagram-analytics.utils.token :refer [secret make-token]]
     [instagram-analytics.services.posts
      :refer
      [all-posts top-n-posts posts-by-type]]
@@ -9,7 +10,7 @@
   )
 
 (defn login-handler [request params]
-  (response {:message "All good"} )
+  (response {:access_token (make-token (get (get params "authentication") "username"))} )
   )
 
 (defn launch-handler [request params]

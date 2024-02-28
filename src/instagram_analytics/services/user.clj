@@ -3,7 +3,7 @@
     [clojure.core]
     [clojure.java.jdbc
      :refer [with-db-connection query]]
-    [instagram-analytics.config.database :refer [datasource]]
+    [instagram-analytics.config.database :refer [datasource datasource-options]]
     [honey.sql :as sql]
     [honey.sql.helpers :refer [select from where ]]))
 
@@ -17,7 +17,9 @@
                                  (-> (select :*)
                                      (from :api_users)
                                      (where :and [:= :password password] [:= :username username])
-                                     (sql/format)))))))
+                                     (sql/format)))
+                          )
+                         )))
 
 (defn is-username-verificated? [username password]
   (with-db-connection [conn {:datasource @datasource}]
