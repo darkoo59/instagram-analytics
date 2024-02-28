@@ -20,7 +20,6 @@
       (-> request
           (validate-login-request params)
           (validate-credentials params)
-          (validate-token params)
           (login-handler params))
        (catch Exception e (handle-bad-request (str e)))))
     )

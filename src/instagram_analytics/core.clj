@@ -4,6 +4,7 @@
     [ring.middleware.json :refer [wrap-json-response wrap-json-params]]
     [ring.middleware.session :refer [wrap-session]]
     [ring.middleware.params :refer [wrap-params]]
+    [ring.middleware.cors :refer [wrap-cors]]
     [compojure.core :refer [defroutes GET POST PATCH DELETE]]
     [compojure.route :as route]
     [ring.util.response :refer [response bad-request]]
@@ -34,4 +35,6 @@
 ;      (wrap-session)
       (wrap-json-params)
       (wrap-params)
-      (wrap-json-response)))
+      (wrap-json-response)
+      (wrap-cors :access-control-allow-origin [#"http://localhost:8080/*"]
+                 :access-control-allow-methods [:get :put :post :delete])))

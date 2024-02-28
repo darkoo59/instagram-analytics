@@ -8,19 +8,19 @@
 (def datasource-options
   {:auto-commit        true
    :read-only          false
-   :managed-connection 30000
+   :connection-timeout 30000
    :validation-timeout 5000
    :idle-timeout       600000
    :max-lifetime       1800000
    :minimum-idle       10
-   :maximum-pool-size  10
+   :maximum-pool-size  20
    :pool-name          "db-pool"
    :adapter            "postgresql"
-   :username           (env :database-username)
-   :password           (env :database-password)
-   :database-name      (env :database-name)
-   :server-name        (env :database-server)
-   :port-number        (env :database-port)
+   :username           "postgres"
+   :password           "admin"
+   :database-name      "instagram-analytics-dev"
+   :server-name        "localhost"
+   :port-number        "5432"
    :register-mbeans    false})
 
 (defonce datasource

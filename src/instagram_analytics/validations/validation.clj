@@ -13,9 +13,8 @@
 (defn validate-login-request [request params]
   (let [authentication (get params "authentication")
         username       (get authentication "username")
-        password       (get authentication "password")
-        token          (get (get request :query-params) "token")]
-    (if (validate-login-params username password token)
+        password       (get authentication "password")]
+    (if (validate-login-params username password)
       request
       (throw (Exception. "Params for login request aren't valid")))))
 

@@ -15,6 +15,7 @@
                  [environ "1.0.3"]
                  [hikari-cp "2.5.0"]
                  [ring/ring-defaults "0.4.0"]
+                 [ring-cors/ring-cors "0.1.13"]
                  [ovotech/ring-jwt "0.1.0"]
                  [buddy/buddy-sign "3.5.351"]
                  [com.github.seancorfield/honeysql "2.5.1103"]
@@ -33,5 +34,9 @@
   :main ^:skip-aot instagram-analytics.core
   :target-path "target/%s"
   :ring {:handler instagram-analytics.core/app}
-  :profiles {:uberjar {:aot :all
-                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}})
+  :profiles {:uberjar {:aot :all}
+             :dev {:migratus {:migration-dir "migrations/dev"
+                              :store :database
+                              :db {:connection-uri "jdbc:postgresql://localhost:5432/instagram-analytics-dev?user=postgres&password=admin"}}
+                   :env {:database-name "instagram-analytics-dev"}
+                    }})
