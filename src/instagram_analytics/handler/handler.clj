@@ -4,6 +4,7 @@
     [instagram-analytics.services.csv_data :refer [load-csv]]
     [instagram-analytics.services.user :refer [create-user]]
     [instagram-analytics.utils.token :refer [secret make-token]]
+    [instagram-analytics.services.statistics :refer [calculate-post-type-percentages calculate-average-type-reach]]
     [instagram-analytics.services.posts
      :refer
      [all-posts top-n-posts posts-by-type]]
@@ -36,3 +37,11 @@
 (defn posts-by-type-handler [request params]
   (let [posts (posts-by-type (get params "type"))]
     (response (generate-string {:posts posts}))))
+
+(defn type-percentages-handler [request params]
+  (let [percentages (calculate-post-type-percentages)]
+    (response (generate-string {:percentages percentages}))))
+
+(defn type-reach-handler [request params]
+  (let [percentages (calculate-average-type-reach)]
+    (response (generate-string {:percentages percentages}))))

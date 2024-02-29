@@ -39,12 +39,8 @@
 
 (defn validate-token [request params]
   (let [token          (get params "token")
-        _ (println "TOKEN")
-        _ (println token)
         unsigned-token (unsign-token token)
-        username       (get unsigned-token :username)
-        _ (println "USERNAME")
-        _ (println username)]
+        username       (get unsigned-token :username)]
     (if (and (some? username) (is-username-verificated? username))
       request
       (throw (Exception. "Token isn't valid")))))

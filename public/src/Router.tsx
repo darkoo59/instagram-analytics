@@ -5,6 +5,7 @@ import App from "./App";
 import Home from "./pages/home";
 import Register from "./pages/register";
 import Posts from "./pages/posts";
+import Statistics from "./pages/statistics";
 
 const Router = createBrowserRouter([
   {
@@ -32,10 +33,10 @@ const Router = createBrowserRouter([
         path: "posts",
         element: <Posts />
       },
-    //   {
-    //     path: "statistic",
-    //     element: <Statistic />
-    //   }
+      {
+        path: "statistic",
+        element: <Statistics />
+      }
     ]
   }
 ]);
