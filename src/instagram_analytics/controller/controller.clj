@@ -10,8 +10,9 @@
       validate-launch-request
       validate-top-n-posts-request
       validate-all-posts-request
-      validate-posts-by-type-request]]
-    [instagram-analytics.handler.handler :refer [login-handler launch-handler all-posts-handler top-n-posts-handler posts-by-type-handler]]
+      validate-posts-by-type-request
+      validate-registration-request]]
+    [instagram-analytics.handler.handler :refer [login-handler launch-handler all-posts-handler top-n-posts-handler posts-by-type-handler registration-handler]]
     ))
 
 (defn login-controller [request]
@@ -23,6 +24,15 @@
           (login-handler params))
        (catch Exception e (handle-bad-request (str e)))))
     )
+
+(defn registration-controller [request]
+  (let [params (:params request)]
+    (try
+      (-> request
+          (validate-registration-request params)
+          (registration-handler params))
+      (catch Exception e (handle-bad-request (str e)))))
+  )
 
 (defn launch-controller [request]
   (let [params (:params request)]
@@ -38,8 +48,6 @@
   (let [params (:params request)]
     (try
       (-> request
-          (validate-all-posts-request params)
-          (validate-credentials params)
           (validate-token params)
           (all-posts-handler params))
       (catch Exception e (handle-bad-request (str e))))))
@@ -59,7 +67,6 @@
     (try
       (-> request
           (validate-posts-by-type-request params)
-          (validate-credentials params)
           (validate-token params)
           (posts-by-type-handler params))
       (catch Exception e (handle-bad-request (str e))))))
