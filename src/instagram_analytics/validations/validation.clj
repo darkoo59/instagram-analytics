@@ -6,7 +6,8 @@
      :refer
      [validate-login-params
       validate-top-n-posts-params
-      validate-posts-by-type-params]]
+      validate-posts-by-type-params
+      validate-registration-params]]
     [instagram-analytics.utils.token :refer [unsign-token]]
     [instagram-analytics.services.user :refer [is-user-verificated? is-username-verificated?]]))
 
@@ -17,6 +18,16 @@
     (if (validate-login-params username password)
       request
       (throw (Exception. "Params for login request aren't valid")))))
+
+(defn validate-registration-request [request params]
+  (let [firstname (get params "firstname")
+        lastname (get params "lastname")
+        email (get params "email")
+        password (get params "password")
+        username (get params "username")]
+    (if (validate-registration-params firstname lastname email password username)
+      request
+      (throw (Exception. "Params for registration request aren't valid")))))
 
 (defn validate-credentials [request params]
   (let [authentication (get params "authentication")
@@ -44,11 +55,8 @@
       (throw (Exception. "Params for launch request aren't valid")))))
 
 (defn validate-all-posts-request [request params]
-  (let [authentication (get params "authentication")
-        username       (get authentication "username")
-        password       (get authentication "password")
-        token          (get (get request :query-params) "token")]
-    (if (validate-login-params username password token)
+  (let [token          (get params "token")]
+    (if (validate-token token)
       request
       (throw (Exception. "Params for all posts request aren't valid")))))
 
@@ -64,11 +72,8 @@
       (throw (Exception. "Params for top n posts request aren't valid")))))
 
 (defn validate-posts-by-type-request [request params]
-  (let [authentication (get params "authentication")
-        username       (get authentication "username")
-        password       (get authentication "password")
-        token          (get params "token")
+  (let [token          (get params "token")
         type           (get params "type")]
-    (if (validate-posts-by-type-params username password token type)
+    (if (validate-posts-by-type-params token type)
       request
-      (throw (Exception. "Params for top n posts request aren't valid")))))
+      (throw (Exception. "Params for posts by type request aren't valid")))))

@@ -17,14 +17,21 @@
       launch-controller
       all-posts-controller
       top-n-posts-controller
-      posts-by-type-controller]]))
+      posts-by-type-controller
+      registration-controller
+      type-percentages-controller
+      type-reach-controller
+      ]]))
 
 (defroutes routes-handler
   (POST "/instagram-analytics-api/login" request (login-controller request))
+  (POST "/instagram-analytics-api/registration" request (registration-controller request))
   (POST "/instagram-analytics-api/launch" request (launch-controller request))
   (GET "/instagram-analytics-api/all-posts" request (all-posts-controller request))
   (GET "/instagram-analytics-api/top-n-posts" request (top-n-posts-controller request))
   (GET "/instagram-analytics-api/posts-by-type" request (posts-by-type-controller request))
+  (GET "/instagram-analytics-api/statistics/percentages" request (type-percentages-controller request))
+  (GET "/instagram-analytics-api/statistics/reach" request (type-reach-controller request))
   (route/not-found "Not found"))
 
 (def app

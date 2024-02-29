@@ -38,5 +38,5 @@
              :dev {:migratus {:migration-dir "migrations/dev"
                               :store :database
                               :db {:connection-uri "jdbc:postgresql://localhost:5432/instagram-analytics-dev?user=postgres&password=admin"}}
-                   :env {:database-name "instagram-analytics-dev"}
+                   :env {:database-name "instagram-analytics-dev" :token-secret "secret"}
                     }})
