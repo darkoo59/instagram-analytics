@@ -1,5 +1,7 @@
 # instagram-analytics
 
+
+<video src="https://github.com/darkoo59/instagram-analytics/blob/main/public/public/React%20App.mp4" width="300" />
 FIXME: description
 
 ## Installation
