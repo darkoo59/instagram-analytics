@@ -21,7 +21,8 @@
       posts-by-type-handler
       registration-handler
       type-percentages-handler
-      type-reach-handler]]
+      type-reach-handler
+      type-engagement-handler]]
     ))
 
 (defn login-controller [request]
@@ -94,4 +95,12 @@
       (-> request
           ;          (validate-token params)
           (type-reach-handler params))
+      (catch Exception e (handle-bad-request (str e))))))
+
+(defn type-engagement-controller [request]
+  (let [params (:params request)]
+    (try
+      (-> request
+          ;          (validate-token params)
+          (type-engagement-handler params))
       (catch Exception e (handle-bad-request (str e))))))

@@ -21,6 +21,7 @@
       registration-controller
       type-percentages-controller
       type-reach-controller
+      type-engagement-controller
       ]]))
 
 (defroutes routes-handler
@@ -32,6 +33,7 @@
   (GET "/instagram-analytics-api/posts-by-type" request (posts-by-type-controller request))
   (GET "/instagram-analytics-api/statistics/percentages" request (type-percentages-controller request))
   (GET "/instagram-analytics-api/statistics/reach" request (type-reach-controller request))
+  (GET "/instagram-analytics-api/statistics/engagement" request (type-engagement-controller request))
   (route/not-found "Not found"))
 
 (def app

@@ -20,7 +20,7 @@ const Posts = () => {
     const [loading, setLoading] = React.useState(false);
     const { isAuth } = React.useContext<UserContextValue>(UserContext);
     const [currentPage, setCurrentPage] = React.useState(1);
-    const [postsPerPage, setPostsPerPage] = React.useState(9);
+    const [postsPerPage, setPostsPerPage] = React.useState(8);
     const [value, setValue] = React.useState(0);
 
     const fetchPosts = (async () => {
