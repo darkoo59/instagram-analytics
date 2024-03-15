@@ -4,10 +4,7 @@
     [clojure.spec.alpha :as s]
     [instagram-analytics.spec.spec
      :refer
-     [validate-login-params
-      validate-top-n-posts-params
-      validate-posts-by-type-params
-      validate-registration-params]]
+     :all]
     [instagram-analytics.utils.token :refer [unsign-token]]
     [instagram-analytics.services.user :refer [is-user-verificated? is-username-verificated?]]))
 

@@ -13,21 +13,11 @@
      [wrap-idle-session-timeout wrap-absolute-session-timeout]]
     [instagram-analytics.controller.controller
      :refer
-     [login-controller
-      launch-controller
-      all-posts-controller
-      top-n-posts-controller
-      posts-by-type-controller
-      registration-controller
-      type-percentages-controller
-      type-reach-controller
-      type-engagement-controller
-      ]]))
+     :all]))
 
 (defroutes routes-handler
   (POST "/instagram-analytics-api/login" request (login-controller request))
   (POST "/instagram-analytics-api/registration" request (registration-controller request))
-  (POST "/instagram-analytics-api/launch" request (launch-controller request))
   (GET "/instagram-analytics-api/all-posts" request (all-posts-controller request))
   (GET "/instagram-analytics-api/top-n-posts" request (top-n-posts-controller request))
   (GET "/instagram-analytics-api/posts-by-type" request (posts-by-type-controller request))
@@ -38,12 +28,12 @@
 
 (def app
   (-> routes-handler
-;      (wrap-idle-session-timeout
-;       {:timeout-response (response {:status 2 :error "Your session have expired"})
-;        :timeout          100})
-;      (wrap-session)
+      (wrap-idle-session-timeout
+       {:timeout-response (response {:status 2 :error "Your session have expired"})
+        :timeout          100})
+      (wrap-session)
       (wrap-json-params)
       (wrap-params)
       (wrap-json-response)
-      (wrap-cors :access-control-allow-origin [#"http://localhost:8080/*"]
+      (wrap-cors :access-control-allow-origin  [#"http://localhost:8080/*"]
                  :access-control-allow-methods [:get :put :post :delete])))

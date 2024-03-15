@@ -4,25 +4,10 @@
     [instagram-analytics.utils.response_helper :refer [handle-bad-request]]
     [instagram-analytics.validations.validation
      :refer
-     [validate-login-request
-      validate-credentials
-      validate-token
-      validate-launch-request
-      validate-top-n-posts-request
-      validate-all-posts-request
-      validate-posts-by-type-request
-      validate-registration-request]]
+     :all]
     [instagram-analytics.handler.handler
      :refer
-     [login-handler
-      launch-handler
-      all-posts-handler
-      top-n-posts-handler
-      posts-by-type-handler
-      registration-handler
-      type-percentages-handler
-      type-reach-handler
-      type-engagement-handler]]
+     :all]
     ))
 
 (defn login-controller [request]
@@ -43,16 +28,6 @@
           (registration-handler params))
       (catch Exception e (handle-bad-request (str e)))))
   )
-
-(defn launch-controller [request]
-  (let [params (:params request)]
-    (try
-      (-> request
-          ;          (validate-launch-request params)
-          ;          (validate-credentials params)
-          ;          (validate-token params)
-          (launch-handler params))
-      (catch Exception e (handle-bad-request (str e))))))
 
 (defn all-posts-controller [request]
   (let [params (:params request)]
@@ -85,7 +60,6 @@
   (let [params (:params request)]
     (try
       (-> request
-          ;          (validate-token params)
           (type-percentages-handler params))
       (catch Exception e (handle-bad-request (str e))))))
 
@@ -93,7 +67,6 @@
   (let [params (:params request)]
     (try
       (-> request
-          ;          (validate-token params)
           (type-reach-handler params))
       (catch Exception e (handle-bad-request (str e))))))
 
@@ -101,6 +74,5 @@
   (let [params (:params request)]
     (try
       (-> request
-          ;          (validate-token params)
           (type-engagement-handler params))
       (catch Exception e (handle-bad-request (str e))))))
