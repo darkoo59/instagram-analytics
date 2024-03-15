@@ -69,7 +69,7 @@ https://github.com/darkoo59/instagram-analytics/assets/75729841/6be9b256-704d-42
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <a name="#about-the-project"></a>
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img src="https://github.com/darkoo59/instagram-analytics/blob/main/public/public/application-screenshot.png"/>
 
 Welcome to Instagram Analytics Tool - an innovative solution for analyzing Instagram account data! Our project is aimed at providing comprehensive insights into various aspects of instagram profiles, including posts, instagram Reels, carousels, images, and much more. With a focus on metrics such as reach, likes, comments, and engagement rates, our tool offers invaluable information for individuals, businesses, marketers, and researchers alike.
 
