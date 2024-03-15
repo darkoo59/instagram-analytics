@@ -68,18 +68,37 @@ https://github.com/darkoo59/instagram-analytics/assets/75729841/6be9b256-704d-42
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
+<a name="#about-the-project"></a>
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Project info will go here.
+Welcome to Instagram Analytics Tool - an innovative solution for analyzing Instagram account data! Our project is aimed at providing comprehensive insights into various aspects of instagram profiles, including posts, instagram Reels, carousels, images, and much more. With a focus on metrics such as reach, likes, comments, and engagement rates, our tool offers invaluable information for individuals, businesses, marketers, and researchers alike.
+
+<h2><b>Features in Progress</b></h2>
+Currently, our project is in progress, with a dedicated team working tirelessly to enhance its functionality and usability. While we continue to refine and expand our offerings, you can expect the following features:
+
+<ul>
+    <li>
+        <strong>Rich Data Analysis:</strong> Dive deep into the rich data provided by Instagram accounts, gaining valuable insights into user behavior, content performance, and audience engagement.
+    </li>
+    <li>
+        <strong>Comprehensive Metrics:</strong> From likes and comments to shares and impressions, our tool covers a wide range of metrics to give you a holistic view of Instagram account performance.
+    </li>
+    <li>
+        <strong>Regular Updates:</strong> We're committed to keeping our tool up-to-date with the latest Instagram features and trends. Expect regular updates to incorporate new functionalities and address user feedback.
+    </li>
+</ul>
+
+<h2><b>Get In Touch</b></h2>
+<a name="#built-with"></a>
+If you have any questions about the project or suggestions for improvement, don't hesitate to reach out to the author (Darko Selaković) directly. Your feedback is invaluable to us as we strive to create a tool that meets the needs of our users.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 ### Built With
-
-* [![Clojure][Clojure-url]
+<a name="#built-with"></a>
+* [![Clojure]][Clojure-url]
 * [![React][React.js]][React-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -89,22 +108,26 @@ Project info will go here.
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+Install the latest version of <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">npm</a>.
+* npm (update to latest version scrypt)
   ```sh
   npm install npm@latest -g
   ```
+Install the latest version of <a href="https://leiningen.org/">leiningen</a>.
+
+Install the latest version of <a href="https://clojure.org/guides/install_clojure">clojure</a>.
+
+Install the latest version of <a href="https://react.dev/learn/installation">React</a>.
+
+Install the latest version of <a href="https://www.postgresql.org/">PostgreSQL</a>.
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Contact owner for hidden configurations
+1. Contact owner for hidden configurations and stuff
 2. Clone the repo
    ```sh
    git clone https://github.com/darkoo59/instagram-analytics.git
@@ -113,16 +136,30 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    npm install
    ```
-4. Download statistic from instagram and add missing configurations
-
+4. Download <a href="https://help.later.com/hc/en-us/articles/360043246313-Export-Later-s-Instagram-Analytics-as-CSV-Files">statistic from instagram</a> and add missing configurations
+5. Setup database with received configurations from repository owner.
+6. Run public application
+   ```sh
+   npm start
+   ```
+7. Run backend application
+   ```sh
+   lein ring server
+   ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+### Usage
 
-Project details can be found in doc section.
+1. Sign Up/Login: If you're new to Instagram Analytics Tool, sign up for an account. If you're an existing user, log in to your account.
+2. Import Data: Be sure that you placed csv file with all statistics in resource folder
+3. Select Analysis Options: Choose the type of analysis you want to perform. You can analyze individual posts, Instagram Reels, carousels, images, or get an overall account performance summary.
+4. Explore additional features and settings to customize your analysis further. From filtering options to advanced metrics, application offers a comprehensive toolkit for in-depth Instagram account analysis.
+5. Stay Updated: Keep an eye out for regular updates and new features added to application. We're constantly improving our tool to provide you with the best possible Instagram analytics experience.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
@@ -155,7 +192,6 @@ Don't forget to give the project a star! Thanks again!
 
 Darko Selaković - darko.selakovic11@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
