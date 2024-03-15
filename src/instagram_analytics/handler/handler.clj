@@ -4,7 +4,7 @@
     [instagram-analytics.services.csv_data :refer [load-csv]]
     [instagram-analytics.services.user :refer [create-user]]
     [instagram-analytics.utils.token :refer [secret make-token]]
-    [instagram-analytics.services.statistics :refer [calculate-post-type-percentages calculate-average-type-reach calculate-engagement-for-type]]
+    [instagram-analytics.services.statistics :refer :all]
     [instagram-analytics.services.posts
      :refer
      [all-posts top-n-posts posts-by-type]]
