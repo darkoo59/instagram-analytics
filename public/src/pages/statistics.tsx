@@ -1,9 +1,6 @@
 import axios from 'axios';
 import * as React from 'react';
-import { InstagramEmbed, LinkedInEmbed } from 'react-social-media-embed';
 import {UserContextProvider, UserContextValue, UserContext} from "../shared/contexts/UserContext"
-import Pagination from '../shared/components/pagination';
-import Post from '../shared/components/post';
 import Box from '@mui/material/Box/Box';
 import Tabs from '@mui/material/Tabs/Tabs';
 import Tab from '@mui/material/Tab/Tab';

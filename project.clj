@@ -8,6 +8,7 @@
                  [compojure "1.7.0"]
                  [migratus/migratus "1.5.4"]
                  [org.slf4j/slf4j-log4j12 "2.0.7"]
+                 [org.clojure/tools.logging "1.3.0"]
                  [org.clojure/java.jdbc "0.7.12"]
                  [org.postgresql/postgresql "42.6.0"]
                  [ring/ring-json "0.5.1"]

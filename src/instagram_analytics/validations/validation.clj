@@ -1,3 +1,4 @@
+;; This namespace provides functions for validating request parameters.
 (ns instagram-analytics.validations.validation
   (:require
     [clojure.core :refer :all]
@@ -8,6 +9,7 @@
     [instagram-analytics.utils.token :refer [unsign-token]]
     [instagram-analytics.services.user :refer [is-user-verificated? is-username-verificated?]]))
 
+;; Validates parameters for login request.
 (defn validate-login-request [request params]
   (let [authentication (get params "authentication")
         username       (get authentication "username")
@@ -16,6 +18,7 @@
       request
       (throw (Exception. "Params for login request aren't valid")))))
 
+;; Validates parameters for registration request.
 (defn validate-registration-request [request params]
   (let [firstname (get params "firstname")
         lastname (get params "lastname")
@@ -26,6 +29,7 @@
       request
       (throw (Exception. "Params for registration request aren't valid")))))
 
+;; Validates user credentials.
 (defn validate-credentials [request params]
   (let [authentication (get params "authentication")
         username       (get authentication "username")
@@ -34,6 +38,7 @@
       [request params]
       (throw (Exception. "User isn't verificated")))))
 
+;; Validates JWT token.
 (defn validate-token [request params]
   (let [token          (get params "token")
         unsigned-token (unsign-token token)
@@ -42,32 +47,22 @@
       request
       (throw (Exception. "Token isn't valid")))))
 
-(defn validate-launch-request [request params]
-  (let [authentication (get params "authentication")
-        username       (get authentication "username")
-        password       (get authentication "password")
-        token          (get (get request :query-params) "token")]
-    (if (validate-login-params username password token)
-      request
-      (throw (Exception. "Params for launch request aren't valid")))))
-
 (defn validate-all-posts-request [request params]
   (let [token          (get params "token")]
     (if (validate-token token)
       request
       (throw (Exception. "Params for all posts request aren't valid")))))
 
+;; Validates parameters for retrieving all posts request.
 (defn validate-top-n-posts-request [request params]
-  (let [authentication (get params "authentication")
-        username       (get authentication "username")
-        password       (get authentication "password")
-        token          (get params "token")
+  (let [token          (get params "token")
         n              (get params "num")
         column-name    (get params "column-name")]
-    (if (validate-top-n-posts-params username password token n column-name)
+    (if (validate-top-n-posts-params token n column-name)
       request
       (throw (Exception. "Params for top n posts request aren't valid")))))
 
+;; Validates parameters for retrieving top N posts request.
 (defn validate-posts-by-type-request [request params]
   (let [token          (get params "token")
         type           (get params "type")]

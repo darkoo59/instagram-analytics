@@ -1,3 +1,5 @@
+;; This namespace defines the main entry point for the backend application, setting up
+;; routes, middleware, and the main application handler.
 (ns instagram-analytics.core
   (:require
     [clojure.core :refer :all]
@@ -15,6 +17,9 @@
      :refer
      :all]))
 
+
+;; Defines the routes for handling different HTTP requests. Each route corresponds to
+;; a specific controller function responsible for processing the request.
 (defroutes routes-handler
   (POST "/instagram-analytics-api/login" request (login-controller request))
   (POST "/instagram-analytics-api/registration" request (registration-controller request))
@@ -26,6 +31,7 @@
   (GET "/instagram-analytics-api/statistics/engagement" request (type-engagement-controller request))
   (route/not-found "Not found"))
 
+;; The main application handler that combines routes with middleware.
 (def app
   (-> routes-handler
       (wrap-idle-session-timeout
