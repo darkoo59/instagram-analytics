@@ -1,16 +1,23 @@
+;; This namespace contains functions for calculating various statistics based on CSV data.
 (ns instagram-analytics.services.statistics
   (:require
-    [clojure.core]
+    [clojure.core :refer :all]
+    [clojure.tools.logging :refer [warn]]
     [instagram-analytics.services.csv_data :refer [csv-data]]
     [instagram-analytics.constant.csv-headers
      :refer
      [link-header post-type reach comments-number likes]]
     [cheshire.core :refer [generate-string]]))
 
+;; Extracts the index of a column from the header.
+(defn extract-column-index [header column-name]
+  (.indexOf header column-name))
+
+;; Calculates the percentage of each post type in the dataset.
 (defn calculate-post-type-percentages []
   (let [data @csv-data
         header (first data)]
-    (if-let [type-column-index (.indexOf (first data) post-type)]
+    (if-let [type-column-index (extract-column-index (first data) post-type)]
       (let [total-posts (count data)
             type-counts (->> data
                              (rest)
@@ -19,18 +26,19 @@
         (into {}
               (for [[type count] type-counts]
                 [type (float (/ (* 100 count) total-posts))])))
-      (println "Column " post-type " can't be found at CSV file."))))
+      (warn "Column " post-type " can't be found at CSV file."))))
 
+;; Calculates the average reach for each post type.
 (defn calculate-average-type-reach []
   (let [data @csv-data
         header (first data)]
-    (if-let [type-column-index (.indexOf header post-type)]
+    (if-let [type-column-index (extract-column-index header post-type)]
       (let [total-posts (count data)
             type-counts (->> data
                              (rest)
                              (map #(nth % type-column-index))
                              (frequencies))]
-        (if-let [reach-column-index (.indexOf header reach)]
+        (if-let [reach-column-index (extract-column-index header reach)]
           (let [type-reach (->> data
                                 (rest)
                                 (map
@@ -52,12 +60,9 @@
                      (if (pos? count)
                        (/ total-reach count)
                        0.0)])))))
+      (warn "Column " post-type " can't be found at CSV file."))))
 
-      (println "Column " post-type " can't be found at CSV file."))))
-
-(defn extract-column-index [header column-name]
-  (.indexOf header column-name))
-
+;; Calculates the average reach, comments, and likes for each post type.
 (defn calculate-engagement-for-type []
   (let [data                  @csv-data
         header                (first data)

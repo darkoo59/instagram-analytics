@@ -1,3 +1,4 @@
+;; This namespace contains functions for managing user data in the database.
 (ns instagram-analytics.services.user
   (:require
     [clojure.core]
@@ -7,8 +8,10 @@
     [honey.sql :as sql]
     [honey.sql.helpers :refer [select from where insert-into columns values]]))
 
+;; Generates a random UUID
 (defn uuid [] (java.util.UUID/randomUUID))
 
+;; Checks if the provided username and password combination is verified.
 (defn is-user-verificated? [username password]
   (with-db-connection [conn {:datasource @datasource}]
                       (< 0
@@ -21,6 +24,7 @@
                           )
                          )))
 
+;; Checks if the provided username is verified.
 (defn is-username-verificated? [username]
   (with-db-connection [conn {:datasource @datasource}]
                       (< 0
@@ -33,6 +37,7 @@
                           )
                          )))
 
+;; Creates a new user with the provided informations.
 (defn create-user [firstname lastname email username password]
   (with-db-connection [conn {:datasource @datasource}]
                       (execute! conn
