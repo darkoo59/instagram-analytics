@@ -26,7 +26,7 @@ https://github.com/darkoo59/instagram-analytics/assets/75729841/6be9b256-704d-42
   <p align="center">
     An awesome tool for infulencers!
     <br />
-    <a href="https://github.com/darkoo59/instagram-analytics/doc"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/darkoo59/instagram-analytics/tree/main/doc"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/darkoo59/instagram-analytics/issues">Report Bug</a>
@@ -157,7 +157,7 @@ Install the latest version of <a href="https://www.postgresql.org/">PostgreSQL</
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more examples, please refer to the [Documentation](https://github.com/darkoo59/instagram-analytics/tree/main/doc)_
 
 
 See the [open issues](https://github.com/darkoo59/instagram-analytics/issues) for a full list of proposed features (and known issues).
